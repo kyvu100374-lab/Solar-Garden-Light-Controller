@@ -1,6 +1,6 @@
 /* 
  * File:   INA219.h
- * Author: congx
+ * Author: Thi
  *
  * Created on August 18, 2026, 2:50 PM
  */
@@ -26,9 +26,9 @@
 #define Current_reg 0x04
 #define Calib_reg   0x05
 
-//2. Khai b·o bien
+//2. Khai b√°o bien
 
-//3. Khai b·o Prototype (nguyÍn m?u h‡m)
+//3. Khai b√°o Prototype (nguy√™n m?u h√†m)
 void INA219_INIT();
 float INA219_READ_SHUNT();
 float INA219_READ_BUS();
