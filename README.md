@@ -26,7 +26,7 @@ Hệ thống điều khiển sạc pin năng lượng mặt trời tự động 
 
 Sơ đồ nguyên lý được phân chia thành các khối chức năng chính:
 
-![Schematic Overview](docs/schematic.jpg)
+![Schematic Overview](https://raw.githubusercontent.com/kyvu100374-lab/Solar-Garden-Light-Controller/main/docs/schematic.jpg)
 
 1. **SOLAR INPUT & INA219 SENSOR:** Đầu vào Solar và cảm biến dòng/áp INA219 giao tiếp I2C.
 2. **BUCK CONVERTER & GATE DRIVER:** Mạch hạ áp Buck và tầng lái công suất.
