@@ -11,7 +11,7 @@ Hệ thống điều khiển sạc pin năng lượng mặt trời tự động 
 
 ## 📌 Điểm Nổi Bật Kỹ Thuật (Key Features)
 
-![MPPT IRC Overview](docs/MPPT%20IRC.png)
+![MPPT IRC Overview](Solar-Garden-Light-Controller/docs/MPPT%20IRC.png)
 * **Thuật Toán MPPT Incremental Conductance (IncCond):** 
   * Liên tục tính toán $dI/dV$ và $-I/V$ từ dữ liệu cảm biến INA219 để xác định chính xác điểm công suất cực đại (MPP) của tấm pin mặt trời.
   * Khắc phục hoàn toàn nhược điểm dao động quanh điểm MPP của thuật toán Perturb & Observe (P&O) truyền thống khi cường độ bức xạ ánh sáng thay đổi đột ngột.
