@@ -17,7 +17,7 @@
 #define _XTAL_FREQ  20000000
 
 // lenh
-#define val_calib       38692
+#define val_calib       2276
 #define STEP            2
 #define EPSILON_V       0.02f       // Nguong coi dV = 0 (Volt)
 #define EPSILON_I       0.005f      // Nguong coi dI = 0 (A)
@@ -137,7 +137,7 @@ void __interrupt() my_isr0()
         if (rx_index < 5) {
             rx_buffer[rx_index++] = tx_byte;
         } else {
-            rx_index = 0; // Tránh tràn b? nh? ??m n?u d?n byte rác
+            rx_index = 0; // TrÃ¡nh trÃ n b? nh? ??m n?u d?n byte rÃ¡c
         }
         
         if(rx_index >= NUM_RX + 2) {
@@ -235,7 +235,7 @@ int main(void) {
                 seconds = 0;
                 count_50ms = 0;
                 
-                // Ch? ghi EEPROM reset n?u giá tr? tr??c ?ó khác 0 ?? b?o l?u tu?i th? EEPROM
+                // Ch? ghi EEPROM reset n?u giÃ¡ tr? tr??c ?Ã³ khÃ¡c 0 ?? b?o l?u tu?i th? EEPROM
                 if (EEPROM_Read(0x00) != 0 || EEPROM_Read(0x01) != 0) {
                     EEPROM_Write(0x00, 0);
                     EEPROM_Write(0x01, 0);
@@ -320,10 +320,10 @@ void MPPT(void)
     {
         float inc_cond = ((D_current * vol) + (D_vol * current)) / D_vol;
         if(inc_cond > EPSILON_INC) {
-            vol_control += STEP;    // Tang áp
+            vol_control += STEP;    // Tang Ã¡p
         }
         else if(inc_cond < -EPSILON_INC) {
-            vol_control -= STEP;    // Gi?m áp
+            vol_control -= STEP;    // Gi?m Ã¡p
         }
     }
         
