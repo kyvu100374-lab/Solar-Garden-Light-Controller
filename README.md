@@ -1,50 +1,49 @@
-# Solar-Garden-Light-Controller
-Bộ điều khiển đèn sân vườn năng lượng mặt trời tự động
+# ☀️ MPPT Solar Charger & Garden Light Controller 
 
-![Hardware - Altium Designer](https://img.shields.io/badge/Hardware-Altium%20Designer%2019-blue.svg)(#)
-![MCU - PIC16F877A](https://img.shields.io/badge/MCU-PIC16F877A-orange.svg)(#)
-![License - MIT](https://img.shields.io/badge/License-MIT-green.svg)(#)
+[![Algorithm - IncCond MPPT](https://img.shields.io/badge/MPPT-Incremental%20Conductance-brightgreen.svg)](#)
+[![MCU - PIC Microcontroller](https://img.shields.io/badge/MCU-PIC18F%20%2F%20PIC16F-orange.svg)](#)
+[![Sensor - INA219 I2C](https://img.shields.io/badge/Sensor-INA219%20I2C-blue.svg)](#)
+[![License - MIT](https://img.shields.io/badge/License-MIT-green.svg)](#)
 
-Hệ thống điều khiển sạc pin mặt trời và tự động bật/tắt đèn sân vườn ban đêm, tích hợp bộ hạ áp Buck Converter, cảm biến dòng/áp I2C và tầng lái công suất MOSFET.
+Hệ thống điều khiển sạc pin năng lượng mặt trời tự động tối ưu công suất cực đại sử dụng thuật toán **MPPT Incremental Conductance (IncCond)**, kết hợp cảm biến dòng/áp **INA219 (I2C)**, bộ hạ áp Buck Converter và tự động bật/tắt đèn sân vườn ban đêm.
 
 ---
 
-## 📌 Tổng Quan Dự Án
+## 📌 Điểm Nổi Bật Kỹ Thuật (Key Features)
 
-Dự án thiết kế mạch điều khiển nguồn năng lượng mặt trời thông minh cho hệ thống chiếu sáng sân vườn gia đình. Mạch xử lý toàn bộ chu trình từ quản lý sạc pin ban ngày đến tự động bật đèn chiếu sáng ban đêm với độ tin cậy cao.
-
-### Các Tính Năng Chính:
-* **Tự động Bật/Tắt (Auto Day/Night Switch):** Cảm biến điện áp tấm pin qua mạch định thời NE555 và Rơ-le giúp nhận biết chính xác trạng thái Ngày/Đêm.
-* **Bộ Sạc Buck Converter:** Hạ áp thông minh từ tấm pin mặt trời ($V_{solar}$) sạc cho Pin/Ắc-quy thông qua IC XL4016.
-* **Đo Lường & Giám Sát:** Cảm biến INA219 giao tiếp I2C giúp vi điều khiển theo dõi chính xác dòng điện và điện áp sạc.
-* **Khối Điều Control & Lái Tải:** 
-  * Vi điều khiển **PIC16F877A** điều khiển luồng hoạt động và phát xung PWM.
-  * Tầng lái Gate Driver dạng **Totem-pole** kích mở hoàn toàn MOSFET IRFZ44 đóng cắt đèn LED 15W ban đêm không lo bị nóng.
+* **Thuật Toán MPPT Incremental Conductance (IncCond):** 
+  * Liên tục tính toán $dI/dV$ và $-I/V$ từ dữ liệu cảm biến INA219 để xác định chính xác điểm công suất cực đại (MPP) của tấm pin mặt trời.
+  * Khắc phục hoàn toàn nhược điểm dao động quanh điểm MPP của thuật toán Perturb & Observe (P&O) truyền thống khi cường độ bức xạ ánh sáng thay đổi đột ngột.
+* **Đo Lường & Giám Sát Chi Tiết:**
+  * Cảm biến **INA219** giao tiếp I2C tốc độ cao giúp theo dõi chính xác điện áp ($V_{solar}$), dòng điện sạc ($I_{charge}$) và công suất sạc ($P_{solar}$).
+* **Điều Khiển Sạc & Tải Công Suất:**
+  * Module PWM điều chỉnh chu kỳ xung kích mở tầng công suất Buck Converter qua DAC / Gate Driver.
+  * Khối chuyển mạch tự động phát hiện trạng thái Ngày/Đêm để đóng cắt đèn LED chiếu sáng ban đêm.
 
 ---
 
 ## 📐 Sơ Đồ Nguyên Lý (Schematic Architecture)
 
-Sơ đồ nguyên lý được phân chia thành **5 khối chức năng chính**:
+Sơ đồ nguyên lý được phân chia thành các khối chức năng chính:
 
-![Schematic Overview](./docs/schematic.png)
+![Schematic Overview](./docs/schematic.jpg)
 
-1. **AUTO DAY/NIGHT RELAY SWITCH:** Cảm biến điện áp Solar, mạch NE555 và các khâu hạ áp LM7812/LM7805.
-2. **BUCK CONVERTER:** Mạch hạ áp XL4016 và hồi tiếp TL431 điều khiển dòng sạc.
-3. **SOLAR INPUT & VOLTAGE / CURRENT SENSOR:** Đầu vào Solar và cảm biến dòng/áp INA219.
-4. **MAIN CONTROLLER:** Khối vi điều khiển PIC16F877A, thạch anh 20MHz, nút nhấn Reset và mạch nạp ICSP.
-5. **GATE DRIVER & LOAD SWITCH:** Tầng lái Totem-pole và MOSFET IRFZ44 điều khiển đèn LED 15W.
+1. **SOLAR INPUT & INA219 SENSOR:** Đầu vào Solar và cảm biến dòng/áp INA219 giao tiếp I2C.
+2. **BUCK CONVERTER & GATE DRIVER:** Mạch hạ áp Buck và tầng lái công suất.
+3. **MAIN CONTROLLER:** Khối vi điều khiển PIC, thạch anh, nút bấm Reset và cổng nạp ICSP.
+4. **AUTO DAY/NIGHT SWITCH:** Cảm biến chuyển trạng thái sạc ngày và bật đèn đêm.
 
 ---
 
 ## 🛠️ Cấu Trúc Thư Mục Repository
 
 ```text
-├── Documentation/          # Tài liệu thiết kế & File Smart PDF
-│   └── Solar_Garden_Light_Controller.pdf
-├── Hardware/               # File thiết kế Altium Designer
-│   ├── Schematic/          # Sơ đồ nguyên lý (.SchDoc)
-│   └── Outputs/            # File sản xuất (Gerber, BOM, Assembly)
-├── Firmware/               # Mã nguồn C/C++ cho PIC16F877A
-├── docs/                   # Hình ảnh minh họa cho README
+├── Hardware/               # File sơ đồ mạch nguyên lý 
+├── Firmware/               # Mã nguồn C điều khiển thuật toán MPPT & Peripheral
+│   ├── MPPT-control.c      # Thuật toán MPPT Incremental Conductance
+│   ├── INA219.c / .h       # Driver đọc cảm biến dòng/áp I2C
+│   ├── PWM.c / .h          # Điều khiển xung PWM 
+│   └── i2c.c / .h          # Thư viện giao tiếp I2C
+├── docs/                   # Hình ảnh minh họa dự án
+│   └── schematic.jpg       # Ảnh sơ đồ nguyên lý
 └── README.md               # Tài liệu hướng dẫn dự án
