@@ -38,12 +38,13 @@ Sơ đồ nguyên lý được phân chia thành các khối chức năng chính
 ## 🛠️ Cấu Trúc Thư Mục Repository
 
 ```text
-├── Hardware/               # File sơ đồ mạch nguyên lý 
-├── Firmware/               # Mã nguồn C điều khiển thuật toán MPPT & Peripheral
-│   ├── MPPT-control.c      # Thuật toán MPPT Incremental Conductance
-│   ├── INA219.c / .h       # Driver đọc cảm biến dòng/áp I2C
-│   ├── PWM.c / .h          # Điều khiển xung PWM 
-│   └── i2c.c / .h          # Thư viện giao tiếp I2C
-├── docs/                   # Hình ảnh minh họa dự án
-│   └── schematic.jpg       # Ảnh sơ đồ nguyên lý
-└── README.md               # Tài liệu hướng dẫn dự án
+├── Hardware/                # File sơ đồ mạch nguyên lý
+├── Firmware/                # Mã nguồn C điều khiển thuật toán MPPT & Peripheral
+│   ├── MPPT-control.c      # Chương trình chính (Main) & Thuật toán IncCond
+│   ├── INA219.c / .h        # Driver đọc cảm biến dòng/áp I2C
+│   ├── PWM.c / .h           # Điều khiển xung PWM
+│   └── i2c.c / .h           # Thư viện giao tiếp I2C
+├── docs/                    # Hình ảnh minh họa dự án
+│   ├── MPPT_IRC.png         # Biểu đồ đặc tuyến MPPT IncCond
+│   └── schematic.jpg        # Ảnh sơ đồ nguyên lý
+└── README.md                # Tài liệu hướng dẫn dự án
