@@ -1,7 +1,7 @@
 # ☀️ MPPT Solar Charger & Garden Light Controller 
 
 [![Algorithm - IncCond MPPT](https://img.shields.io/badge/MPPT-Incremental%20Conductance-brightgreen.svg)](#)
-[![MCU - PIC Microcontroller](https://img.shields.io/badge/MCU-PIC18F%20%2F%20PIC16F-orange.svg)](#)
+[![MCU - PIC Microcontroller](https://img.shields.io/badge/MCU-PIC16F877A-orange.svg)](#)
 [![Sensor - INA219 I2C](https://img.shields.io/badge/Sensor-INA219%20I2C-blue.svg)](#)
 [![License - MIT](https://img.shields.io/badge/License-MIT-green.svg)](#)
 
