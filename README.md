@@ -11,7 +11,7 @@ Hệ thống điều khiển sạc pin mặt trời và tự động bật/tắt
 
 ## 📌 Tổng Quan Dự Án
 
-Dự án thiết kế mạch điều khiển nguồn năng lượng mặt trời thông minh cho hệ thống chiếu sáng sân vườn gia đình. Mạch xử lý toàn bộ chu trình từ quản lý sạc pin/ắc-quy ban ngày đến tự động bật đèn chiếu sáng ban đêm với độ tin cậy cao.
+Dự án thiết kế mạch điều khiển nguồn năng lượng mặt trời thông minh cho hệ thống chiếu sáng sân vườn gia đình. Mạch xử lý toàn bộ chu trình từ quản lý sạc pin ban ngày đến tự động bật đèn chiếu sáng ban đêm với độ tin cậy cao.
 
 ### Các Tính Năng Chính:
 * **Tự động Bật/Tắt (Auto Day/Night Switch):** Cảm biến điện áp tấm pin qua mạch định thời NE555 và Rơ-le giúp nhận biết chính xác trạng thái Ngày/Đêm.
