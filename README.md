@@ -165,8 +165,6 @@ Mạch được lắp và chạy thực tế tại nhà, ngoài trời, liên t�
 
 <img src="docs/images/night_lighting.jpg" width="320" alt="Đèn sáng ban đêm">
 
-Việc cần làm tiếp: ghi log qua UART (dòng, áp, công suất) trong một ngày nắng để có đồ thị I-V, P-V thực tế và đánh giá hiệu quả của MPPT.
-
 ## Hướng phát triển
 
 - Dùng khung UART nhận từ PC để điều chỉnh độ sáng hoặc đặt ngưỡng từ xa.
